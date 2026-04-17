@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(
         name = "role",
-        uniqueConstraints = @UniqueConstraint(columnNames = "role", name = "uk_role_name")
+        uniqueConstraints = @UniqueConstraint(columnNames = "name", name = "uk_role_name")
 )
 public class Role {
 

@@ -38,3 +38,4 @@ out/
 
 # Env / secrets
 application-*.properties
+src/main/resources/db/diff.xml
