@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
         name = "company",
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "identifier_name", name = "uk_identifierName"),
-                @UniqueConstraint(columnNames = {"phone_code","phone_number"} , name = "uk_phone_code_phone_number"),
-                @UniqueConstraint(columnNames = "email", name = "uk_email"),
+                @UniqueConstraint(columnNames = {"phone_code","phone_number"} , name = "uk_phone_code_phone_number_company"),
+                @UniqueConstraint(columnNames = "email", name = "uk_company_email"),
 
         }
 )
