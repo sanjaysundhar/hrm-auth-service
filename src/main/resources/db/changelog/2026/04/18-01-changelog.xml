@@ -1,0 +1,171 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Sanjay (generated)" id="1776488936903-1">
+        <createTable tableName="company">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="companyPK"/>
+            </column>
+            <column name="address_line1" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_line2" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency" type="VARCHAR(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="identifier_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_code" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="postal_code" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="website" type="VARCHAR(30)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-2">
+        <createTable tableName="company_user_mapping">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="company_user_mappingPK"/>
+            </column>
+            <column name="company_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-3">
+        <createTable tableName="permission">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="permissionPK"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-4">
+        <createTable tableName="role">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="rolePK"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-5">
+        <createTable tableName="role_permission_mapping">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="role_permission_mappingPK"/>
+            </column>
+            <column name="permission_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-6">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="userPK"/>
+            </column>
+            <column name="email" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_code" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-7">
+        <addUniqueConstraint columnNames="email" constraintName="uk_company_email" tableName="company"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-8">
+        <addUniqueConstraint columnNames="company_id, user_id" constraintName="uk_company_user" tableName="company_user_mapping"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-9">
+        <addUniqueConstraint columnNames="identifier_name" constraintName="uk_identifierName" tableName="company"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-10">
+        <addUniqueConstraint columnNames="name" constraintName="uk_permission_name" tableName="permission"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-11">
+        <addUniqueConstraint columnNames="phone_code, phone_number" constraintName="uk_phone_code_phone_number_company" tableName="company"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-12">
+        <addUniqueConstraint columnNames="phone_code, phone_number" constraintName="uk_phone_code_phone_number_user" tableName="user"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-13">
+        <addUniqueConstraint columnNames="name" constraintName="uk_role_name" tableName="role"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-14">
+        <addUniqueConstraint columnNames="role_id, permission_id" constraintName="uk_role_permission" tableName="role_permission_mapping"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-15">
+        <addUniqueConstraint columnNames="email" constraintName="uk_user_email" tableName="user"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-16">
+        <addUniqueConstraint columnNames="user_name" constraintName="uk_user_name" tableName="user"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-17">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="company_user_mapping" constraintName="FKewxn25j4jrgoen11vndqniyl8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-18">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="company_user_mapping" constraintName="FKmaopngxbpudqupkypc71vcsm7" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="role" validate="true"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-19">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="role_permission_mapping" constraintName="FKmw1igvkrcpqq77w0o32gnbq2r" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="role" validate="true"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-20">
+        <addForeignKeyConstraint baseColumnNames="permission_id" baseTableName="role_permission_mapping" constraintName="FKpuihlymysj88vc9lp90rsocug" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="permission" validate="true"/>
+    </changeSet>
+    <changeSet author="Sanjay (generated)" id="1776488936903-21">
+        <addForeignKeyConstraint baseColumnNames="company_id" baseTableName="company_user_mapping" constraintName="FKt6fl453uqi18jt7ob7iojh8j2" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="company" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
